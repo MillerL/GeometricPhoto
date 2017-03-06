@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <title>Shape-photo</title>
+    <link rel="stylesheet" href="css/main.min.css">
+    <!--  <script>
+        //判断跳转
+        var browser = {
+            versions: function() {
+                var u = navigator.userAgent,
+                    app = navigator.appVersion;
+                return { //移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+        if (browser.versions.android || browser.versions.iPhone) {
+            // alert("是移动端");
+        } else {
+            // alert("不是移动端");
+            window.location.href = "pc.html";
+        }
+    </script>-->
+</head>
+
+<body>
+    <div class="loginPage">
+        <div class="border-bg">
+            <div class="b-top"></div>
+            <div class="l_line"></div>
+            <div class="r_line"></div>
+            <div class="b-bottom"></div>
+        </div>
+        <div class="title"></div>
+        <div class="login">
+            <div class="password_txt">PASSWORD</div>
+            <input id="input_p" type="password" placeholder="" autocomplete="off">
+            <div class="line"></div>
+            <div class="loginBtn">ENTER</div>
+        </div>
+    </div>
+    <div class="contentPage">
+        <div class="border-bg">
+            <div class="b-top"></div>
+            <div class="l_line"></div>
+            <div class="r_line"></div>
+            <div class="b-bottom"></div>
+        </div>
+
+        <div class="title"></div>
+        <div class="line2"></div>
+        <div class="content">
+            <ul class="content_ul">
+                <!--<li>
+                    <div class="item">
+                        <img src="img/item-pic.jpg" alt="" class="poster">
+                        <a href=""></a><img src="img/play_btn.png" alt="" class="play_icon">
+                        <div class="mask_bar">进击的大文娱</div>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+        <div class="logo"></div>
+
+        <div class="videoLayer">
+            <div class="v_container"></div>
+            <div id="closeLayer"></div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        window.addEventListener('resize', _onResize);
+        _onResize();
+
+        function _onResize() {
+            var docEl = document.documentElement;
+            var default_value = 640;
+            var clientWidth = docEl.clientWidth;
+            var scale = 1;
+            docEl.style.fontSize = 100 * scale * (clientWidth / default_value) + 'px';
+        }
+    </script>
+</body>
+
+</html>
