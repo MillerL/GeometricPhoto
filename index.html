@@ -39,55 +39,12 @@
     </script>-->
 </head>
 
-<body>
-    <div class="loginPage">
-        <div class="border-bg">
-            <div class="b-top"></div>
-            <div class="l_line"></div>
-            <div class="r_line"></div>
-            <div class="b-bottom"></div>
-        </div>
-        <div class="title"></div>
-        <div class="login">
-            <div class="password_txt">PASSWORD</div>
-            <input id="input_p" type="password" placeholder="" autocomplete="off">
-            <div class="line"></div>
-            <div class="loginBtn">ENTER</div>
-        </div>
-    </div>
-    <div class="contentPage">
-        <div class="border-bg">
-            <div class="b-top"></div>
-            <div class="l_line"></div>
-            <div class="r_line"></div>
-            <div class="b-bottom"></div>
-        </div>
+<body onload="init()">
+    <!-- <canvas id="testCanvas" width="960" height="400"></canvas> -->
 
-        <div class="title"></div>
-        <div class="line2"></div>
-        <div class="content">
-            <ul class="content_ul">
-                <!--<li>
-                    <div class="item">
-                        <img src="img/item-pic.jpg" alt="" class="poster">
-                        <a href=""></a><img src="img/play_btn.png" alt="" class="play_icon">
-                        <div class="mask_bar">进击的大文娱</div>
-                    </div>
-                </li>-->
-            </ul>
-        </div>
-        <div class="logo"></div>
-
-        <div class="videoLayer">
-            <div class="v_container"></div>
-            <div id="closeLayer"></div>
-        </div>
-    </div>
-
-    <script src="js/jquery.min.js"></script>
+    <script src="lib/pixi.min.js"></script>
     <script src="js/main.js"></script>
-
-    <script>
+    <!--<script>
         window.addEventListener('resize', _onResize);
         _onResize();
 
@@ -98,7 +55,7 @@
             var scale = 1;
             docEl.style.fontSize = 100 * scale * (clientWidth / default_value) + 'px';
         }
-    </script>
+    </script>-->
 </body>
 
 </html>
