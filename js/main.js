@@ -10,12 +10,18 @@ function init() {
     app.renderer.autoResize = true;
     app.renderer.resize(window.innerWidth, window.innerHeight);
 
-    var graphics = new PIXI.Graphics();
     var graContainer = new PIXI.Container();
-    graphics.lineStyle(30, 0xFFFF0B);
-    graphics.drawCircle(200, 200, 100);
-    graphics.endFill();
+    var annulus = new PIXI.Graphics();
+    annulus.lineStyle(30, 0xFFFF0B);
+    annulus.drawCircle(200, 200, 100);
+    annulus.endFill();
 
-    graContainer.addChild(graphics);
+    var backgroundImg = PIXI.Sprite.fromImage('./assets/img/Mountain-wallpaper.jpg');
+    backgroundImg.width = app.renderer.width;
+    backgroundImg.height = app.renderer.height;
+    // console.log(backgroundImg.width,backgroundImg.height);
+
+    graContainer.addChild(annulus);
+    graContainer.addChild(backgroundImg);
     app.stage.addChild(graContainer);
 }
