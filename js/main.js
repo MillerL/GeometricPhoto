@@ -3,10 +3,7 @@ var app = new PIXI.Application(320, 568, {
     resolution: 2
 });
 document.body.appendChild(app.view);
-// app.renderer.view.style.position = "absolute";
-// app.renderer.view.style.display = "block";
 app.renderer.autoResize = true;
-// app.renderer.resize(320, 568);
 
 function dpi() {
     var default_value = 640;
@@ -40,13 +37,24 @@ graContainer.addChild(annulus);
 
 app.stage.addChild(graContainer);
 
-/*var container = new PIXI.Container();
-container.x = app.renderer.width / 2;
-container.y = app.renderer.height / 2;*/
-// document.getElementsByTagName("canvas").style.transform = "translate3d(-50 % , -50 % , 0 px) scale(" + _scale + ");";
+// var pixiScaledCanvas = $('#pixiScaledCanvas')[0];
+// var pixiScaledCanvasRenderer = new PIXI.CanvasRenderer(400, 50, $('#pixiScaledCanvas')[0]);
 
+if (window.devicePixelRatio) {
+    var width = $(pixiScaledCanvas).attr('width');
+    var height = $(pixiScaledCanvas).attr('height');
 
-function animate() {
-    renderer.render(stage);
-    requestAnimFrame(animate);
+    $(pixiScaledCanvas).attr('width', width * window.devicePixelRatio);
+    $(pixiScaledCanvas).attr('height', height * window.devicePixelRatio);
+    $(pixiScaledCanvas).css('width', width);
+    $(pixiScaledCanvas).css('height', height);
+
+    pixiScaledCanvasRenderer.context.scale(window.devicePixelRatio, window.devicePixelRatio);
 }
+
+var pixiScaledCanvasStage = new PIXI.Stage(0xFFFFFF);
+var pixiScaledCanvasGraphics = new PIXI.Graphics();
+
+pixiScaledCanvasGraphics.lineStyle(1, 0x000000);
+pixiScaledCanvasGraphics.moveTo(x1, y1);
+pixiScaledCanvasGraphics.lineTo(x2, y2);
