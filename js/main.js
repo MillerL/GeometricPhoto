@@ -1,6 +1,6 @@
 var app = new PIXI.Application(320, 568, {
     antialias: true,
-    resolution: 2
+    resolution: 1
 });
 document.body.appendChild(app.view);
 app.renderer.autoResize = true;
@@ -11,9 +11,9 @@ function dpi() {
     return default_value / clientWidth;
 }
 
-console.log(dpi());
-var _scale = 1 / dpi();
-console.log(document.getElementsByTagName("canvas"));
+// console.log(dpi());
+// var _scale = 1 / dpi();
+// console.log(document.getElementsByTagName("canvas"));
 // app.renderer.view.style.transform = "translate3d(-50 % , -50 % , 0 px) scale(" + _scale + ");"
 // scaleToWindow(app.renderer.view, "#2C3539");
 
@@ -51,10 +51,3 @@ if (window.devicePixelRatio) {
 
     pixiScaledCanvasRenderer.context.scale(window.devicePixelRatio, window.devicePixelRatio);
 }
-
-var pixiScaledCanvasStage = new PIXI.Stage(0xFFFFFF);
-var pixiScaledCanvasGraphics = new PIXI.Graphics();
-
-pixiScaledCanvasGraphics.lineStyle(1, 0x000000);
-pixiScaledCanvasGraphics.moveTo(x1, y1);
-pixiScaledCanvasGraphics.lineTo(x2, y2);
