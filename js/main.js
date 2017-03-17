@@ -1,29 +1,45 @@
-var app = new PIXI.Application(320, 568, {
-    antialias: true,
+$(function() {
+    var clientWidth = document.documentElement.clientWidth;
+    var clientHeight = document.documentElement.clientHeight;
+
+    window.onresize = function(event) {
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        //this part resizes the canvas but keeps ratio the same
+        renderer.view.style.width = w + "px";
+        renderer.view.style.height = h + "px";
+        //this part adjusts the ratio:
+        renderer.resize(w, h);
+    }
+})
+
+// var myView = document.getElementById('pixiScaledCanvas');
+var renderer = PIXI.autoDetectRenderer(300, 300, {
+    view: document.getElementById('pixiScaledCanvas'),
+    antialias: false,
+    transparent: false,
     resolution: 1
 });
-document.body.appendChild(app.view);
-app.renderer.autoResize = true;
+document.body.appendChild(renderer.view);
+var stage = new PIXI.Container();
+renderer.render(stage);
 
-function dpi() {
-    var default_value = 640;
-    var clientWidth = document.documentElement.clientWidth;
-    return default_value / clientWidth;
-}
+renderer.autoResize = true;
+renderer.width = "160px";
+renderer.height = "284px";
+/*rendererrenderer.view.style.width = '800px';
+renderer.view.style.height = '600px';*/
 
-// console.log(dpi());
-// var _scale = 1 / dpi();
-// console.log(document.getElementsByTagName("canvas"));
-// app.renderer.view.style.transform = "translate3d(-50 % , -50 % , 0 px) scale(" + _scale + ");"
-// scaleToWindow(app.renderer.view, "#2C3539");
+// Create a new texture
+// var texture = PIXI.Texture.fromImage('./assets/img/Mountain-wallpaper2.jpg');
 
 var graContainer = new PIXI.Container();
 var annulus = new PIXI.Graphics();
 annulus.lineStyle(40, 0xFFFF0B);
 annulus.drawCircle(0, 0, 100);
 annulus.endFill();
-annulus.x = app.renderer.width / 2;
-annulus.y = app.renderer.height / 2;
+annulus.x = renderer.width / 2;
+annulus.y = renderer.height / 2;
 // console.log(annulus.x, annulus.y);
 
 var bg = PIXI.Sprite.fromImage('./assets/img/Mountain-wallpaper2.jpg');
@@ -35,19 +51,7 @@ bg.scale.y = 1;
 graContainer.addChild(bg);
 graContainer.addChild(annulus);
 
-app.stage.addChild(graContainer);
+stage.addChild(graContainer);
 
 // var pixiScaledCanvas = $('#pixiScaledCanvas')[0];
 // var pixiScaledCanvasRenderer = new PIXI.CanvasRenderer(400, 50, $('#pixiScaledCanvas')[0]);
-
-if (window.devicePixelRatio) {
-    var width = $(pixiScaledCanvas).attr('width');
-    var height = $(pixiScaledCanvas).attr('height');
-
-    $(pixiScaledCanvas).attr('width', width * window.devicePixelRatio);
-    $(pixiScaledCanvas).attr('height', height * window.devicePixelRatio);
-    $(pixiScaledCanvas).css('width', width);
-    $(pixiScaledCanvas).css('height', height);
-
-    pixiScaledCanvasRenderer.context.scale(window.devicePixelRatio, window.devicePixelRatio);
-}
