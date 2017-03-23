@@ -15,7 +15,7 @@ $(function() {
     //load files
     PIXI.loader
         .add([
-            "./assets/img/choose.png",
+            // "./assets/img/choose.png",
             "./assets/img/Mountain-wallpaper2.jpg",
             // "images/imageTwo.png",
             // "images/imageThree.png"
@@ -75,6 +75,16 @@ $(function() {
         var inputCon = document.getElementById("inputCon");
         inputCon.appendChild(inputObj);
     }*/
+    var $fileName = $('.fileName');
+    /*$('input[type=file]').change(function() {
+        var path = $(this).val();
+        var fileName = path ? path.substr(path.lastIndexOf('\\') + 1) : '请上传文件';
+        $fileName.text(fileName);
+    });*/
+    // $('input[type=file]').change(readFile());
+
+    var inputObj = document.getElementById('uploadInput');
+    inputObj.addEventListener('change', readFile, false);
 
     function readFile() {
         var file = this.files[0]; //获取input输入的图片
