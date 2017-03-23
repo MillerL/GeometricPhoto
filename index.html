@@ -8,6 +8,7 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta name="format-detection" content="telephone=no, email=no">
     <title>Shape-photo</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.min.css">
     <!--  <script>
         //判断跳转
@@ -40,17 +41,33 @@
 </head>
 
 <body>
+    <div id="appContainer">
+        <form class="pure-form pure-form-aligned">
 
-    <canvas id="pixiScaledCanvas" width="400" height="300"></canvas>
+            <div id="inputCon" class="pure-control-group">
+                <div class="fileWrap">
+                    <input type="file">
+                    <button class="pure-button">Browse</button>
+                </div>
+                <div class="fileName">Please choose a piture</div>
+            </div>
+
+        </form>
+
+        <img id="imgPre" src="" style="display: block;" />
+
+        <canvas id="pixiScaledCanvas"></canvas>
+    </div>
+
 
     <script src="lib/jquery.min.js"></script>
     <script src="lib/pixi.min.js"></script>
-    <script src="lib/scaleToWindow.js"></script>
+
+    <!-- <script src="lib/scaleToWindow.js"></script> -->
     <script src="js/main.js"></script>
     <!--<script>
         window.addEventListener('resize', _onResize);
         _onResize();
-
         function _onResize() {
             var docEl = document.documentElement;
             var default_value = 640;
